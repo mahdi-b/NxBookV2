@@ -7,13 +7,7 @@ from browser import aio as asyncio, window
 class NxFirebaseBackEnd:
     def __init__(self):
         firebase_cfg = {
-            "apiKey": "AIzaSyCY_PJg7LPLpW0J0nfml1LWjBMFv63WKtQ",
-            "authDomain": "nxbook.firebaseapp.com",
-            "databaseURL": "https://nxbook.firebaseio.com",
-            "projectId": "nxbook",
-            "storageBucket": "nxbook.appspot.com",
-            "messagingSenderId": "451664479402",
-            "appId": "1:451664479402:web:ad7aec578e40cfffe5bcd3"
+            // Information goes here
         }
 
         self.firebase = js_lib("firebase")
