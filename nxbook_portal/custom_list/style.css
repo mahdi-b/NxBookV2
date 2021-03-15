@@ -1,0 +1,57 @@
+:host {
+      display: flex;
+      font-family: "Roboto", Helvetica, "Times New Roman", sans-serif;
+      background: #FFF;
+}
+
+
+.entry {
+       display: flex;
+}
+
+.entry::before {
+	       padding: 7px 5px 0 5px;
+	       counter-increment: entries;
+	       content: counter(entries);
+}
+
+input,
+textarea {
+	 flex: 1;
+	 font-family: "Roboto Mono", monospace;
+	 font-size: 14px;
+}
+
+.controls {
+	  display: flex;
+	  flex-direction: column;
+	  margin-left: 10px;
+}
+
+button {
+       min-width: 64px;
+       height: 36px;
+       margin: 0 5px;
+       padding: 0 16px;
+       border: 1px solid #DADCE0;
+       border-radius: 4px;
+       outline: none;
+       background: #FFF;
+       font-family: "Roboto", Helvetica, "Times New Roman", sans-serif;
+       font-size: 14px;
+       font-weight: bold;
+       line-height: 36px;
+       text-transform: uppercase;
+       box-sizing: border-box;
+       transition: border-color 50ms, background 50ms, box-shadow 250ms;
+       cursor: pointer;
+}
+
+button:hover {
+	     box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.08), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+button:focus {
+	     border-color: #2196F3;
+	     opacity: 0.78;
+}
