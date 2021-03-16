@@ -1,5 +1,3 @@
-
-
 from vue import VueComponent
 
 class TopMenu(VueComponent):

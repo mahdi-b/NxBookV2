@@ -1,9 +1,11 @@
 templates:
   index: index.html
-  topmenu: components/topmenu.html
 stylesheets:
   - https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css
   - https://unpkg.com/bootstrap/dist/css/bootstrap.min.css
 scripts:
   - https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js
   - //unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js
+components:
+  - components/top_menu
+  - components/list_item
