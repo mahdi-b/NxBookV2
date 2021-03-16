@@ -1,9 +1,7 @@
-<div :id="myItem" class="list-item-container w-container w-form form">
-            <textarea placeholder="Example Text" rows="2" class="textarea w-input">
-
-            </textarea>
-            <a href="#" class="button w-button" @click="$emit('remove-item', $event.target.parentNode.id)">
-                <strong>X</strong>
-            </a>
+<div :id="myItem.id" class="list-item-container w-container w-form form">
+    <textarea v-model="myItem.text" placeholder="some text here" rows="2" class="textarea w-input"></textarea>
+    <a :id="'button_'+myItem.id" href="#" class="button w-button" @click="remove">
+        <strong>X</strong>
+    </a>
 
 </div>

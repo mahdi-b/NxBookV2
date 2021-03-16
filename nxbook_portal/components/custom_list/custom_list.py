@@ -2,12 +2,12 @@ from vue import VueComponent
 
 class CustomList(VueComponent):
     template = "#customlist"
-    items = [{"id": "1", "text": "Some_text"}, {"id": "2", "text": "other text"}]
+    items = [{"id": "1", "text": "Some_text"}, {"id": "2", "text": "Other text"}]
     item_id = "Parent"
 
     def add_new_item(self, event):
         print("Adding new item")
-        print((self.slots.keys()))
+
 
     def clear_items(self, event):
         self.items = []
