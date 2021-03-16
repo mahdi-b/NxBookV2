@@ -68,7 +68,7 @@ class Provider:
 
                 if "stylesheets" in conponent_config:
                     for i in  range(len(conponent_config["stylesheets"])):
-                        conponent_config["stylesheets"][i] = f"{component_path}/{conponent_config['stylesheets'][i]}"
+                        conponent_config["stylesheets"][k] = f"{component_path}/conponent_config['stylesheets'][i]"
 
                     if "stylesheets" in config:
                         config["stylesheets"] = list(set(config["stylesheets"]+ conponent_config["stylesheets"]))

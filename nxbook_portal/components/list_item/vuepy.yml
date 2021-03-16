@@ -3,5 +3,5 @@ templates:
 stylesheets:
   - css/normalize.css
   - css/webflow.css
-  - css/test-project-66a572.webflow.css
+  - css/test-comps.webflow.css
 

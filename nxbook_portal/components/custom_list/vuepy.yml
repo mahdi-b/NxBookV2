@@ -1,0 +1,6 @@
+templates:
+  customlist: custom_list.html
+stylesheets:
+  - css/normalize_custom_list.css
+  - css/webflow_custom_list.css
+  - css/test-comps.webflow.css

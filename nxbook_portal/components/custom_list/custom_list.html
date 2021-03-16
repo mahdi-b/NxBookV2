@@ -1,0 +1,14 @@
+<div>
+    <div class="custom-list-container w-container">
+
+        <div :items="items" id="w-node-_04fcf41d-9547-579b-c75d-a3c22dcb38ab-619ecc34" class="item-block">
+            <list-item :myItem="item.id" v-for="item in items" :key="item.id" v-on:remove-item="remove_item"> {{item.text}}</list-item>
+        </div>
+        <div class="button-block">
+            <a href="#" class="custom-list-btn plus w-button" @click="add_new_item"><strong>+</strong></a>
+            <a href="#" class="custom-list-btn w-button"><strong>CLEAR</strong></a>
+        </div>
+
+    </div>
+    <p> items are: {{items}} </p>
+</div>

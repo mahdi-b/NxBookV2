@@ -1,4 +1,9 @@
-<div id="element_1" class="item w-form">
-    <textarea rows="2" :placeholder="placeholder_list" maxlength="5000" id="field" name="field" class="item-textarea w-input"></textarea>
-    <a href="#" class="item-btn w-button" @click="remove_list_element"><strong>X</strong></a>
+<div :id="myItem" class="list-item-container w-container w-form form">
+            <textarea placeholder="Example Text" rows="2" class="textarea w-input">
+
+            </textarea>
+            <a href="#" class="button w-button" @click="$emit('remove-item', $event.target.parentNode.id)">
+                <strong>X</strong>
+            </a>
+
 </div>
