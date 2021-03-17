@@ -1,5 +1,5 @@
-<div :id="myItem.id" class="list-item-container w-container w-form form">
-    <textarea v-model="myItem.text" placeholder="some text here" rows="2" class="textarea w-input"></textarea>
+<div  :id="myItem.id" class="list-item-container w-container w-form form">
+    <textarea v-model="itemText" placeholder="some text here" rows="2" class="textarea w-input"></textarea>
     <a :id="'button_'+myItem.id" href="#" class="button w-button" @click="remove">
         <strong>X</strong>
     </a>
