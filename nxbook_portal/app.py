@@ -9,7 +9,7 @@ CustomList.register("custom-list")
 
 class Store(VueStore):
     questions = {}
-    hints = "Hints are"
+    # hints = "Hints are"
 
     @mutation
     def update_questions(self, new_questions, name=None):
@@ -24,9 +24,14 @@ class App(VueComponent):
     def questions(self):
         return self.store.questions
 
-    def created(self):
-        self.questions = self.store.questions
-        self.hints = self.store.hints
+    # @computed
+    # def hints(self):
+    #     return self.store.hints
+
+
+    # def created(self):
+    #     self.questions = self.store.questions
+    #     self.hints = self.store.hints
 
 
 
