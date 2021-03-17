@@ -11,7 +11,6 @@ class Store(VueStore):
     questions = {}
     hints = "Hints are"
 
-
     @mutation
     def update_questions(self, new_questions, name=None):
         print("I am updating the question")
@@ -20,17 +19,13 @@ class Store(VueStore):
 
 class App(VueComponent):
     template = "#index"
-    hints = "Some hints go here"
 
     @computed
     def questions(self):
         return self.store.questions
 
-
-
     def created(self):
         self.questions = self.store.questions
-
         self.hints = self.store.hints
 
 
