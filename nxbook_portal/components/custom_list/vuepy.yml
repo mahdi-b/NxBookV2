@@ -1,6 +1,2 @@
 templates:
   customlist: custom_list.html
-stylesheets:
-  - css/normalize.css
-  - css/test-comps.webflow.css
-  - css/webflow.css

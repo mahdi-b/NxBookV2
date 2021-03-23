@@ -1,6 +1,9 @@
 templates:
   index: index.html
 stylesheets:
+  - css/normalize.css
+  - css/webflow.css
+  - css/nxbook.webflow.css
   - https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css
   - https://unpkg.com/bootstrap/dist/css/bootstrap.min.css
 scripts:

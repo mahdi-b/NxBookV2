@@ -30,26 +30,25 @@ def debounce(func, milliseconds, leading=False):
 
   return wrapper
 
-class ListItem(VueComponent):
-    template = "#listitem"
+class TextListItem(VueComponent):
+    template = "#textlistitem"
     myItem: dict = None
     message="abc"
 
     debounce_item_text = None
 
-    def created(self):
-        print("In created")
-        self.debounce_item_text = debounce(self.update_item_text, 1000, leading=False)
-        print(f"value of func is {self.debounce_item_text}")
-    @computed
-    def itemText(self):
-        return self.myItem.text
 
     def update_item_text(self, new_value):
         print(f"In debouce: the value is {new_value}")
         self.myItem.text = new_value
         self.emit("updated-item")
 
+    def created(self):
+        self.debounce_item_text = debounce(self.update_item_text, 1000, leading=False)
+
+    @computed
+    def itemText(self):
+        return self.myItem.text
 
     @itemText.setter
     def itemText(self, new_value):

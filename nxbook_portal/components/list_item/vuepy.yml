@@ -1,7 +1,4 @@
 templates:
-  listitem: list_item.html
-stylesheets:
-  - css/normalize.css
-  - css/webflow.css
-  - css/test-comps.webflow.css
+  textlistitem: text_list_item.html
+
 

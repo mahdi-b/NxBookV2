@@ -37,14 +37,10 @@ class CustomList(VueComponent):
             self.items.pop(item_position)
 
     def on_updated_item(self):
-        print("I am in th elist component. \nThe list has changed and it's time to push it to the store")
-        self.store.commit(f"update_{self.listName}", self.items)
+        print("I am in th list component. \nThe list has changed and it's time to push it to the store")
+        self.store.commit(f"update_param", self.listName, self.items)
 
-    # @computed
-    # def list_items(self):
-    #     return self.items
-    #
-    # @list_items.setter
-    # def list_items(self):
-    #     print("value of my items i changing....")
+
+    def submit(self):
+        print("In customlist -- button was pressed")
 
