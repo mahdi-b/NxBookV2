@@ -4,22 +4,13 @@ from vue.bridge import Object
 from javascript import JSON
 from browser import aio as asyncio, window
 
+import sqlite3
+SQLITE3_DB_PATH = "/ABCD"
+
 class NxFirebaseBackEnd:
     def __init__(self):
-        firebase_cfg = {
-            "apiKey": "",
-            "authDomain": "XYZ.firebaseapp.com",
-            "databaseURL": "https://XYZ.firebaseio.com",
-            "projectId": "XYZ",
-            "storageBucket": "XYZ.appspot.com",
-            "messagingSenderId": "",
-            "appId": ""
-        }
 
-        self.firebase = js_lib("firebase")
-        self.firebase.initializeApp(Object.to_js(firebase_cfg))
-
-        self.database = self.firebase.firestore()
+        self.database = sqlite3.connect(SQLITE3_DB_PATH)
 
 
 
