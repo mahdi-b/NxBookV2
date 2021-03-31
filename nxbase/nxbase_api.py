@@ -1,6 +1,7 @@
 import flask
 from flask import request, jsonify
 import sqlite3
+import time
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -14,11 +15,12 @@ def get_module(module_id):
 
 @app.route('/modules', methods=['POST'])
 def get_modules():
+    time.sleep(2)
     conn = sqlite3.connect('nxbase.sqlite3')
     cur = conn.cursor()
     modules = cur.execute('SELECT * FROM Modules').fetchall()
-    return jsonify(modules)
-
-
+    resp = jsonify(modules)
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp
     
 app.run()

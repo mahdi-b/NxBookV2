@@ -1,13 +1,14 @@
 <div class="main">
-<template>
-  <div>
-    <b-form-select v-model="selected_m" :options="modules" :select-size="10"
-    v-on:change="mod_clicked">
-    </b-form-select>
-    <div class="mt-3">Selected: <strong>{{ selected_m }}</strong></div>
-  </div>
-  <b-form-select v-model="selected_ques" :options="questions_display" :select-size="10"
-    v-on:change="ques_clicked">
-  </b-form-select>
-</template>
+    <template>
+        <div>
+            <b-form-select v-model="selected_m" :options="modules_repr" :select-size="10"
+                           v-on:change="mod_clicked">
+            </b-form-select>
+        </div>
+        <div class="mt-3">Selected: <strong>{{ selected_m }}</strong>
+            <b-form-select v-model="selected_ques" :options="questions_display" :select-size="10"
+                           v-on:change="ques_clicked">
+            </b-form-select>
+        </div>
+    </template>
 </div>
