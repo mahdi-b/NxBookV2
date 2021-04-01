@@ -1,19 +1,14 @@
 templates:
   index: index.html
-  add: add.html
 stylesheets:
   - https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css
   - https://unpkg.com/bootstrap/dist/css/bootstrap.min.css
   - css/normalize.css
   - css/webflow.css
-  - css/nxbook.webflow.css  
+  - css/nxbook.webflow.css
 scripts:
   "A": https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js
   "B": https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js
   vuex: true
   vue-router: true
-components:
-  - components/custom_list
-  - components/list_item
-  - components/top_menu
-  
+

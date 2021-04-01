@@ -1,54 +1,10 @@
 <div>
-    <div class="question-form">
-        <h3 class="heading-2">Question Details</h3>
-        <div class="form-block-3 w-form">
-            <form @submit.prevent="submit" id="email-form-2" name="email-form-2" data-name="Email Form 2" class="form-2">
-                <label for="name" class="field-label">Question Name</label>
-                <input type="text" class="w-input" v-model="q_name" maxlength="256" name="name" data-name="Name"
-                       placeholder="" id="name">
-                <label for="q_text" class="field-label">Question Text</label>
-                <textarea placeholder="Example Text"
-                          maxlength="5000"
-                          id="q_text" v-model="q_text"
-                          class="w-input"></textarea>
-
-                <label for="q_details" class="field-label">Additional Question Details</label>
-                <textarea placeholder="Example Text" maxlength="5000" id="q_details" v-model="q_details"
-                          class="w-input"></textarea>
-
-                <label for="q_instruction" class="field-label">Question
-                    Instructions</label>
-                <textarea placeholder="Example Text" maxlength="5000" id="q_instruction"
-                          v-model="q_instructions" class="w-input"></textarea>
-
-                <label for="q_type" class="field-label">Question Type</label>
-                <select id="q_type" name="q_type" v-model="q_type" class="w-select">
-                    <option value="multiple">Multiple Choice</option>
-                    <option value="single">Single Choice</option>
-                    <option value="text">Text</option>
-                    <option value="code" disabled>Code</option>
-                </select>
-                <label class="field-label">Possible Answers</label>
-                <custom-list listName="answers"></custom-list>
-
-                <label class="field-label">Correct Answer(s)</label>
-                <div class="div-custom-list"></div>
-
-
-                <label class="field-label">Possible Answers Explanations</label>
-
-
-                <label class="field-label">Hints</label>
-                <custom-list listName="hints"></custom-list>
-
-
-                <input type="submit" value="Submit" class="submit-button w-button">
-            </form>
-
-        </div>
-    </div>
-    <div class="question-form json-repr">
-        <h3 class="heading">JSON Representation (output)</h3>
-        <div class="div-block-4">{{json_representation}}</div>
-    </div>
+  <div class="menu-buttons-block">
+    <router-link to="/foo"><a href="#" class="button w-button">ADD QUESTION</a></router-link>
+    <router-link to="/bar"><a href="#" class="button w-button">EDIT QUESTION</a></router-link>
+    <router-link to="/fun"><a href="#" class="button w-button">DELETE QUESTION</a></router-link>
+  </div>
+  <div>
+    <router-view></router-view>
+  </div>
 </div>

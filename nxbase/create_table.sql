@@ -81,7 +81,7 @@ INSERT INTO NxBaseUsers (first_name, last_name, email, affiliation_id, date_join
        VALUES ("John", "Doe", "j.doe@gmail.com", 1, "1/1/2021");
 ############### MODULE 1 ################
 INSERT INTO Modules ( name, description, date_added, owner_id)
-       VALUES ("INTRODUCTION TO PYTHON",
+       VALUES ("Introduction To Python",
        	       "Basic introduction to Python for non-programmers",
 	       "1/1/2020", 1);
 ######
@@ -124,7 +124,7 @@ INSERT INTO Answers (text, correct, explanation, question_id)
 ############### MODULE 2 #################
 INSERT INTO Modules ( name, description, date_added, owner_id)
        VALUES ("Data Wrangling in Python",
-       	       "Data Wrangling intro wiht Pandas",
+       	       "Data Wrangling intro with Pandas",
 	       "1/1/2020", 1);
 ######
 INSERT INTO UserModule (user_id, module_id, role_id)

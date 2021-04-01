@@ -14,27 +14,32 @@ class App(VueComponent):
     modules = []
     modules_repr = [{"value": 1, "text": 'Loading...'}]
     selected_m = ""
-    selected_ques = [{"value": 1, "text": 'A'}, {"value": 2, "text": 'B'}]
+    selected_q = []
     questions = []
     nx_firebase = None
-
 
 
     @computed
     def questions_display(self):
         if self.questions:
             print(self.questions[0])
-        return [{"value": q.value, "text": q.data["question"]}
+        return [{"value": q[0], "text": q[2][:60]+"..."}
                     for q in self.questions]
         # return [{"value": "A", "text": "B"}]
 
+    def created(self):
+        # self.nx_firebase = NxFirebaseBackEnd.NxFirebaseBackEnd()
+        print("getting list of modules")
+        asyncio.run(self.get_module_names())
+        #print(self.modules)
+
 
     def mod_clicked(self, event):
-        print(f"Module {self.selected_m} selected, getting it questions...")
-        # asyncio.run(self.get_questions())
+        print(f"Module {self.selected_m} selected, getting its questions...")
+        asyncio.run(self.get_questions())
 
     def ques_clicked(self, event):
-        print(f"Question {self.selected_m} was clicked")
+        print(f"Question {self.selected_q} was clicked")
 
     # used with sqlite.
     async def get_module_names(self):
@@ -47,8 +52,12 @@ class App(VueComponent):
         print(f"modules_repr is: {self.modules_repr}")
 
     async def get_questions(self):
-        print("now getting questions")
-        #self.questions = await self.nx_firebase.get_questions(self.selected_m)
+        print(f"now getting questions for module id {self.selected_m}")
+        self.questions = [[1, None, 'Loading...', None]]
+        req = await aio.ajax("POST", f"http://127.0.0.1:5001/questions/{self.selected_m}")
+        print(f"just got the questions and they are: --{req.data}-- and type is {type(eval(req.data))}")
+        self.questions = eval(req.data)
+
 
 
 # used with firebase.
@@ -58,10 +67,5 @@ class App(VueComponent):
 #     async def get_questions(self):
 #         self.questions = await self.nx_firebase.get_questions(self.selected_m)
 
-    def created(self):
-        self.nx_firebase = NxFirebaseBackEnd.NxFirebaseBackEnd()
-        print("getting list of modules")
-        asyncio.run(self.get_module_names())
-        #print(self.modules)
 
 App("#app")
