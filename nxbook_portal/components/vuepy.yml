@@ -1,0 +1,13 @@
+stylesheets:
+  - css/nxbook.webflow.css  
+  - css/normalize.css
+  - css/webflow.css
+  - https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css
+  - https://unpkg.com/bootstrap/dist/css/bootstrap.min.css
+scripts:
+  "A": https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js
+  "B": https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js
+components:
+  - custom_list
+  - list_item
+  

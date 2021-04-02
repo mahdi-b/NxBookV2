@@ -31,6 +31,8 @@ def debounce(func, milliseconds, leading=False):
   return wrapper
 
 class TextListItem(VueComponent):
+    isTextItem: bool = True
+
     template = "#textlistitem"
     myItem: dict = None
     message="abc"

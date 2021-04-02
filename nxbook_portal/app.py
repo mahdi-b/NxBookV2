@@ -2,7 +2,8 @@
 from vue import VueComponent, VueRouter, VueRoute, VueStore
 from vue import computed, mutation
 
-from components.list_item.list_item import TextListItem
+from components.list_item.text_list_item import TextListItem
+#from components.list_item.ineteger_list_item import IntegerListItem
 from components.custom_list.custom_list import CustomList
 
 from browser import aio as asyncio
@@ -37,6 +38,8 @@ class Add(VueComponent):
                 "instructions": self.q_instructions,
                 "type":self.q_type,
 	        "answers": self.answers,
+                "correct_answers": self.correct_answers,
+                "answers_explanations": self.answers_explanations,
                 "hints": self.hints}
 
     @computed
@@ -49,7 +52,7 @@ class Add(VueComponent):
     @computed
     def answers_explanations(self):
         return self.store.answers_explanations
-    
+
     def mod_selected(self, event):
         print(f"Module {self.selected_m} was selected...")
 
@@ -63,7 +66,32 @@ class Add(VueComponent):
         print(f"Done getting modules {req.data}")
         self.modules = eval(req.data)
         self.modules_repr = [ {"value": x[0], "text": x[1]} for x in self.modules]
-    
+
+    def submit(self, event):
+        errors = []
+        # 1. make sure that we have at least 2 answers and none is empty
+        if len(self.answers) < 2 or any([len(x["text"]) == 0 for x in self.answers]):
+            errors.append("At least 2 answers are required and none should be empty")
+        # 2. correct answers should non empty ids
+        if any([x["text"]=="" for x in self.correct_answers]):
+            errors.append("Correct answers should not be empty")
+        # 3. correct answers should have values that map to valid answers
+        answers_ids = [x["id"] for x in self.answers]
+        if any([x["text"] not in answers_ids for x in self.correct_answers]):
+            errors.append("Correct answers should have values that map to valid answers")
+        # 4. There shoudl be the same number of answers_explanations as answers.
+        if len(self.answers_explanations) != len(self.answers):
+            errors.append("Number of answers explanations should be the same as the number of answers")
+        # 4. None of the hints should be empty
+        if any([x["text"]=="" for x in self.hints]):
+            errors.append("None of the hints should be empty")
+
+        print(errors)
+
+
+
+
+
 class Edit(VueComponent):
     template = "<div>Edit</div>"
 
@@ -72,9 +100,9 @@ class Delete(VueComponent):
 
 class Router(VueRouter):
     routes = [
-        VueRoute("/foo", Add),
-        VueRoute("/bar", Edit),
-        VueRoute("/fun", Delete),
+        VueRoute("/add", Add),
+        VueRoute("/edit", Edit),
+        VueRoute("/delete", Delete),
     ]
 
 

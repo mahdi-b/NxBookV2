@@ -11,7 +11,10 @@ CustomList.register("custom-list")
 
 class Store(VueStore):
     answers = {}
+    answers_explanations = {}
+    correct_answers = {}
     hints = {}
+    
     
     @mutation
     def update_param(self, param_name, new_value, name=None):
@@ -47,14 +50,25 @@ class App(VueComponent):
         return self.store.hints
 
     @computed
-    def json_representation(self):
-        return {"name": self.q_name,
-                "text": self.q_text,
-                "details": self.q_details,
-                "instructions": self.q_instructions,
-                "type":self.q_type,
-                "answers": self.answers,
-                "hints": self.hints}
+    def answers_explanations(self):
+        return self.store.answers_explanations
+
+    @computed
+    def correct_answers(self):
+        return self.store.correct_answers
+
+    
+    # @computed
+    # def json_representation(self):
+    #     return {"name": self.q_name,
+    #             "text": self.q_text,
+    #             "details": self.q_details,
+    #             "instructions": self.q_instructions,
+    #             "type":self.q_type,
+    #             "answers": self.answers,
+    #             "correct_answers": self.correct_answers,
+    #             "answers_explanations": self.answers_explanations, 
+    #             "hints": self.hints}
 
 
     @computed
@@ -74,8 +88,6 @@ class App(VueComponent):
         print(f"Done getting modules {req.data}")	
         self.modules = eval(req.data)
         self.modules_repr = [ {"value": x[0], "text": x[1]} for x in self.modules]
-
-
         
     def mod_selected(self, event):
         print(f"Module {self.selected_m} was selected...")

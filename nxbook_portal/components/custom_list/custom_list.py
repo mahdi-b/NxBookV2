@@ -1,10 +1,13 @@
 from vue import VueComponent, computed
 
+
 class CustomList(VueComponent):
     template = "#customlist"
     listName: str
+    isTextItem: bool = False
 
-    items = [{"id": "0", "text": "Some_text"}, {"id": "1", "text": "Other text"}]
+
+    items = []
     item_id = "Parent"
     items_positions = {}
     next_item_id = len(items)
@@ -15,11 +18,12 @@ class CustomList(VueComponent):
         self.next_item_id += 1
 
         self.items_positions[item_id] = len(self.items)
-        self.items.append({"id": f"{item_id}", "text": "More text"})
+        self.items.append({"id": f"{item_id}", "text": ""})
 
     def clear_list(self, event):
         self.items = []
         print("clearing_list")
+        self.next_item_id = 0
 
     def remove_item(self, item_id):
         print(item_id.split("_"))

@@ -1,31 +1,17 @@
-<!--<div>-->
-<!--    <div class="custom-list-container w-container">-->
-
-<!--        <div id="w-node-_04fcf41d-9547-579b-c75d-a3c22dcb38ab-619ecc34" class="item-block">-->
-<!--            <list-item :myItem="item" v-for="item in items" :key="item.id" v-on:remove-item="remove_item"-->
-<!--            v-on:updated-item="on_updated_item"> {{item.text}}</list-item>-->
-<!--        </div>-->
-<!--        <div class="button-block">-->
-<!--            <a href="#" class="custom-list-btn plus w-button" @click="add_new_item"><strong>+</strong></a>-->
-<!--            <a href="#" class="custom-list-btn w-button" @click="clear_list"><strong>CLEAR</strong></a>-->
-<!--        </div>-->
-<!--        <p>The question are: {{items}}</p>-->
-<!--    </div>-->
-<!--</div>-->
 
 
-<div class="div-custom-list">
-
-    <div class="items-block">
-            <list-item :myItem="item" v-for="item in items" :key="item.id"
+        <div class="div-custom-list">
+          <div class="items-block">
+            <list-item :isTextItem="isTextItem" :myItem="item" v-for="item in items" :key="item.id"
                        v-on:remove-item="remove_item" v-on:updated-item="on_updated_item">
                 {{item.text}}
             </list-item>
-    </div>
-
-    <div class="button-block">
-        <a v-on:click="add_new_item" class="custom-list-btn plus w-button"><strong>+</strong></a>
-        <a v-on:click="clear_list" class="custom-list-btn w-button"><strong>CLEAR</strong></a>
-    </div>
-
-</div>
+	    
+          </div>
+          <div class="buttons-div">
+            <div class="button-block">
+              <a v-on:click="add_new_item" class="custom-list-btn plus w-button"><strong>+</strong></a>
+              <a v-on:click="clear_list" class="custom-list-btn w-button"><strong>CLEAR</strong></a>
+            </div>
+          </div>
+        </div>
