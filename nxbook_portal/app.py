@@ -13,6 +13,7 @@ CustomList.register("custom-list")
 
 
 class Add(VueComponent):
+
     template = "#add"
 
     q_title = ""
@@ -24,6 +25,7 @@ class Add(VueComponent):
     modules = []
     modules_repr = [{"value": 1, "text": 'Loading...'}]
     selected_m = "1"
+    errors = []
 
     @computed
     def answers(self):
@@ -32,15 +34,23 @@ class Add(VueComponent):
 
     @computed
     def json_representation(self):
-        return {"name": self.q_title,
-                "text": self.q_text,
+        answers = [{"answer": x["text"], "correct": False } for x in self.answers]
+        for c_a in self.correct_answers:
+            answers[int(c_a["text"])]["correct"] = True
+        for i, expl in enumerate(self.answers_explanations):
+            answers[i]["explanation"] = expl["text"]
+
+
+        return {
+        "module_id": self.selected_m,
+        "title": self.q_title,
+        "text": self.q_text,
 		"details": self.q_details,
-                "instructions": self.q_instructions,
-                "type":self.q_type,
-	        "answers": self.answers,
-                "correct_answers": self.correct_answers,
-                "answers_explanations": self.answers_explanations,
-                "hints": self.hints}
+        "instructions": self.q_instructions,
+        "type":self.q_type,
+        "answers": answers,
+        "hints": self.hints
+        }
 
     @computed
     def hints(self):
@@ -68,28 +78,28 @@ class Add(VueComponent):
         self.modules_repr = [ {"value": x[0], "text": x[1]} for x in self.modules]
 
     def submit(self, event):
-        errors = []
+        self.errors = []
+        # 1. A question should have a non empty title and text
+        if len(self.q_title) < 5 or len(self.q_text) < 5:
+            self.errors.append("A question should have a non-empty title and text")
+
         # 1. make sure that we have at least 2 answers and none is empty
         if len(self.answers) < 2 or any([len(x["text"]) == 0 for x in self.answers]):
-            errors.append("At least 2 answers are required and none should be empty")
+            self.errors.append("At least 2 answers are required and none should be empty")
         # 2. correct answers should non empty ids
         if any([x["text"]=="" for x in self.correct_answers]):
-            errors.append("Correct answers should not be empty")
+            self.errors.append("Correct answers should not be empty")
         # 3. correct answers should have values that map to valid answers
         answers_ids = [x["id"] for x in self.answers]
         if any([x["text"] not in answers_ids for x in self.correct_answers]):
-            errors.append("Correct answers should have values that map to valid answers")
+            self.errors.append("Correct answers should have values that map to valid answers")
         # 4. There shoudl be the same number of answers_explanations as answers.
         if len(self.answers_explanations) != len(self.answers):
-            errors.append("Number of answers explanations should be the same as the number of answers")
+            self.errors.append("Number of answers explanations should be the same as the number of answers")
         # 4. None of the hints should be empty
         if any([x["text"]=="" for x in self.hints]):
-            errors.append("None of the hints should be empty")
-
-        print(errors)
-
-
-
+            self.errors.append("None of the hints should be empty")
+        print(self.errors)
 
 
 class Edit(VueComponent):
